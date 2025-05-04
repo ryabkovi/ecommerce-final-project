@@ -24,7 +24,7 @@ function Orders() {
   const fetchOrders = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:3000/orders/getOrders",
+        `${import.meta.env.VITE_API_BASE_URL}/orders/getOrders`,
         {
           params: {
             status: filter !== "All" ? filter.toLowerCase() : undefined,

@@ -27,7 +27,7 @@ function Dashboard() {
     const fetchFeedbackCount = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3000/feedback/count",
+          `${import.meta.env.VITE_API_BASE_URL}/feedback/count`,
           {
             withCredentials: true,
           }

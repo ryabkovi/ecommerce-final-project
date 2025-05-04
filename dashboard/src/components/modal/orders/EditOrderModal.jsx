@@ -8,7 +8,7 @@ function EditOrderModal({ orderId, currentStatus, onClose, onStatusUpdate }) {
   const updateStatus = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/orders/updateStatus/${orderId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/orders/updateStatus/${orderId}`,
         { status },
         { withCredentials: true }
       );

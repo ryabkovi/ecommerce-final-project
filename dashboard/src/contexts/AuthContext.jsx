@@ -17,7 +17,7 @@ function AuthProvider({ children }) {
   async function handleLogin(values) {
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/users/manager/login",
+        `${import.meta.env.VITE_API_BASE_URL}/users/manager/login`,
         values,
         {
           withCredentials: true,
@@ -39,7 +39,7 @@ function AuthProvider({ children }) {
   async function getAuth() {
     try {
       const { data } = await axios.get(
-        "http://localhost:3000/users/manager/auth",
+        `${import.meta.env.VITE_API_BASE_URL}/users/manager/auth`,
         {
           withCredentials: true,
         }
@@ -63,7 +63,7 @@ function AuthProvider({ children }) {
   async function logOut() {
     try {
       const { data } = await axios.get(
-        "http://localhost:3000/users/manager/logout",
+        `${import.meta.env.VITE_API_BASE_URL}/users/manager/logout`,
         {
           withCredentials: true,
         }

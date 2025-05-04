@@ -23,7 +23,9 @@ function OrdersSummaryChart() {
     const fetchSummary = async () => {
       try {
         const res = await fetch(
-          "http://localhost:3000/orders/analytics/orders-summary",
+          `${
+            import.meta.env.VITE_API_BASE_URL
+          }/orders/analytics/orders-summary`,
           {
             method: "GET",
             credentials: "include",

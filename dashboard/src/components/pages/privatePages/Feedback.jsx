@@ -20,9 +20,12 @@ function Feedback() {
 
   const fetchFeedback = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/feedback/all", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_BASE_URL}/feedback/all`,
+        {
+          withCredentials: true,
+        }
+      );
       setFeedbacks(data.data);
     } catch (error) {
       console.error("Error fetching feedback:", error);
@@ -74,9 +77,12 @@ function Feedback() {
 
   const handleDeleteFeedback = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/feedback/delete/${id}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        `${import.meta.env.VITE_API_BASE_URL}/feedback/delete/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
       setFeedbacks(feedbacks.filter((fb) => fb._id !== id));
     } catch (err) {
       console.error("Failed to delete feedback:", err);

@@ -22,7 +22,7 @@ function AreaChart() {
     const fetchWeeklyOrders = async () => {
       try {
         const res = await fetch(
-          "http://localhost:3000/orders/analytics/weekly-orders",
+          `${import.meta.env.VITE_API_BASE_URL}/orders/analytics/weekly-orders`,
           {
             method: "GET",
             credentials: "include",

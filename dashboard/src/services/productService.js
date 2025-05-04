@@ -22,7 +22,7 @@ export const getAllProducts = async (
 
 export const addProduct = async (productData) => {
   const res = await axios.post(
-    "http://localhost:3000/products/addProduct",
+    `${import.meta.env.VITE_API_BASE_URL}/products/addProduct`,
     productData,
     { withCredentials: true }
   );
@@ -31,7 +31,7 @@ export const addProduct = async (productData) => {
 
 export const updateProduct = async (id, updateData) => {
   const res = await axios.put(
-    `http://localhost:3000/products/updateProduct/${id}`,
+    `${import.meta.env.VITE_API_BASE_URL}/products/updateProduct/${id}`,
     updateData,
     { withCredentials: true }
   );
@@ -40,7 +40,7 @@ export const updateProduct = async (id, updateData) => {
 
 export const deleteProduct = async (id) => {
   const res = await axios.delete(
-    `http://localhost:3000/products/deleteProduct/${id}`,
+    `${import.meta.env.VITE_API_BASE_URL}/products/deleteProduct/${id}`,
     { withCredentials: true }
   );
   return res.data;

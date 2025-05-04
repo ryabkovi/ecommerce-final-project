@@ -13,7 +13,7 @@ function FeedbackModal({ feedback, onClose, onResponseSent }) {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `http://localhost:3000/feedback/respond/${feedback._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/feedback/respond/${feedback._id}`,
         { response: responseText },
         { withCredentials: true }
       );
