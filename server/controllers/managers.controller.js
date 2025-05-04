@@ -201,7 +201,7 @@ export default {
         <div style="padding: 20px; font-family: Arial, sans-serif;">
           <h2>Password Reset Request</h2>
           <p>Click the button below to reset your password:</p>
-          <a href="http://localhost:5173/resetPassword?email=${email}&token=${refreshPasswordToken}"
+          <a href="https://ecommerce-final-project-client.onrender.com/resetPassword?email=${email}&token=${refreshPasswordToken}"
              style="background: #007bff; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px;">
             Reset Password
           </a>
