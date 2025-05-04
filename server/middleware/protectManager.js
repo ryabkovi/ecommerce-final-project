@@ -23,7 +23,7 @@ function protectManager(req, res, next) {
       const refreshedToken = createToken({ id, permission });
       res.cookie("manager_token", refreshedToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         sameSite: "None",
         maxAge: 60 * 60 * 1000,
       });

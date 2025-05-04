@@ -22,7 +22,7 @@ function validateToken(req, res, next) {
     if (permission === "Manager" || permission === "Admin") {
       res.cookie("manager_token", newToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         sameSite: "None",
         maxAge: 60 * 60 * 1000,
       });
