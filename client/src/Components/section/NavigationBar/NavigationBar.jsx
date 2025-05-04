@@ -12,7 +12,7 @@ function NavigationBar() {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/categories/getCategories"
+          `${import.meta.env.VITE_API_BASE_URL}/categories/getCategories`
         );
         setCategories(response.data.data);
       } catch (error) {

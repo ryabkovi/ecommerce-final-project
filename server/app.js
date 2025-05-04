@@ -21,7 +21,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
-      "http://localhost:3000",
+      `${import.meta.env.VITE_API_BASE_URL}`,
       "https://ecommerce-final-project-client.onrender.com",
       "https://ecommerce-final-project-dashboard.onrender.com",
     ],

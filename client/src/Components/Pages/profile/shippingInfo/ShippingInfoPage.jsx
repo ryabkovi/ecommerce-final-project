@@ -49,7 +49,7 @@ function ShippingInfoPage() {
       };
 
       const response = await axios.put(
-        `http://localhost:3000/users/update-profile/${user._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/users/update-profile/${user._id}`,
         payload,
         { withCredentials: true }
       );

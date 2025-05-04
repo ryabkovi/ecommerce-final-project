@@ -29,7 +29,7 @@ function PaymentMethodsPage() {
     try {
       setSaving(true);
       const { data } = await axios.put(
-        `http://localhost:3000/users/update-profile/${user._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/users/update-profile/${user._id}`,
         { paymentMethod: selectedMethod },
         { withCredentials: true }
       );

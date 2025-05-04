@@ -41,7 +41,7 @@ function LoginForm({ handleClose }) {
     try {
       const { credential } = credentialResponse;
       const { data } = await axios.post(
-        "http://localhost:3000/users/sign-with-google",
+        `${import.meta.env.VITE_API_BASE_URL}/users/sign-with-google`,
         { token: credential },
         { withCredentials: true }
       );

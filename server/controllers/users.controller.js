@@ -68,7 +68,11 @@ export default {
           <h2>Verify Your Email</h2>
           <p>Hello ${user_firstName},</p>
           <p>Please verify your email by clicking the button below:</p>
-          <a href="http://localhost:3000/users/verify-email?email=${user_email}&token=${newUser.verificationToken}"
+          <a href="${
+            import.meta.env.VITE_API_BASE_URL
+          }/users/verify-email?email=${user_email}&token=${
+        newUser.verificationToken
+      }"
              style="background: #007bff; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px;">
             Verify Email
           </a>

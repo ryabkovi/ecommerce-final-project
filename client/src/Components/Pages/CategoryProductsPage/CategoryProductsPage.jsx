@@ -16,7 +16,9 @@ function CategoryProductsPage() {
     const fetchCategoryProducts = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/products/getAllProducts?category=${categoryId}`,
+          `${
+            import.meta.env.VITE_API_BASE_URL
+          }/products/getAllProducts?category=${categoryId}`,
           { withCredentials: true }
         );
         setProducts(data.data);

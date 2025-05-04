@@ -19,7 +19,7 @@ function OrdersPage() {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:3000/orders/getUserOrders",
+          `${import.meta.env.VITE_API_BASE_URL}/orders/getUserOrders`,
           { withCredentials: true }
         );
         if (response.data.success) {
@@ -50,7 +50,7 @@ function OrdersPage() {
 
     try {
       const res = await axios.delete(
-        `http://localhost:3000/orders/deleteOrder/${orderId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/orders/deleteOrder/${orderId}`,
         { withCredentials: true }
       );
 

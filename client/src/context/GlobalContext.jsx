@@ -53,7 +53,7 @@ function GlobalProvider({ children }) {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
-        "http://localhost:3000/products/getAllProducts",
+        `${import.meta.env.VITE_API_BASE_URL}/products/getAllProducts`,
         { withCredentials: true }
       );
       setProducts(data.data);

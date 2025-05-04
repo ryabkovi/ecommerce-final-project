@@ -55,7 +55,7 @@ function AccountPage() {
       setLoading(true);
       const { user_password, newPassword, confirmPassword, ...rest } = formData;
       const response = await axios.put(
-        `http://localhost:3000/users/update-profile/${user._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/users/update-profile/${user._id}`,
         rest,
         { withCredentials: true }
       );
@@ -99,7 +99,9 @@ function AccountPage() {
     try {
       setLoading(true);
       const response = await axios.put(
-        `http://localhost:3000/users/change-password/${user._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/users/change-password/${
+          user._id
+        }`,
         {
           user_password: formData.user_password,
           new_password: formData.newPassword,

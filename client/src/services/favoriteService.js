@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/users/favorites";
+const API_URL = `${import.meta.env.VITE_API_BASE_URL}/users/favorites`;
 
 export async function toggleFavorite(productId) {
   try {

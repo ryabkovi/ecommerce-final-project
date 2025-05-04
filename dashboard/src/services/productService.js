@@ -11,7 +11,9 @@ export const getAllProducts = async (
   if (page) params.append("page", page);
   if (limit) params.append("limit", limit);
 
-  const url = `http://localhost:3000/products/getAllProducts?${params.toString()}`;
+  const url = `${
+    import.meta.env.VITE_API_BASE_URL
+  }/products/getAllProducts?${params.toString()}`;
 
   const res = await axios.get(url, {
     withCredentials: true,
@@ -47,8 +49,11 @@ export const deleteProduct = async (id) => {
 };
 
 export const deleteAllProducts = async () => {
-  const res = await axios.delete("http://localhost:3000/products/deleteAll", {
-    withCredentials: true,
-  });
+  const res = await axios.delete(
+    `${import.meta.env.VITE_API_BASE_URL}/products/deleteAll`,
+    {
+      withCredentials: true,
+    }
+  );
   return res.data;
 };

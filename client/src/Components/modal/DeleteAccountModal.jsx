@@ -12,7 +12,7 @@ function DeleteAccountModal() {
   const handleDelete = async () => {
     try {
       const { data } = await axios.delete(
-        "http://localhost:3000/users/delete",
+        `${import.meta.env.VITE_API_BASE_URL}/users/delete`,
         {
           withCredentials: true,
         }

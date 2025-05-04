@@ -27,7 +27,7 @@ function Contact() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/feedback/send",
+        `${import.meta.env.VITE_API_BASE_URL}/feedback/send`,
         formData,
         { withCredentials: true }
       );

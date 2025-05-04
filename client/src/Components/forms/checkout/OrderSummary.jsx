@@ -41,7 +41,7 @@ function OrderSummary() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/orders/addOrder",
+        `${import.meta.env.VITE_API_BASE_URL}/orders/addOrder`,
         orderPayload,
         { withCredentials: true }
       );

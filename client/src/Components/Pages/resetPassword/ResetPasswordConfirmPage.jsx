@@ -41,7 +41,7 @@ function ResetPasswordConfirmPage() {
 
     try {
       const { data } = await axios.put(
-        "http://localhost:3000/users/reset-password",
+        `${import.meta.env.VITE_API_BASE_URL}/users/reset-password`,
         formData,
         { withCredentials: true }
       );

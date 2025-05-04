@@ -13,9 +13,12 @@ function AuthProvider({ children }) {
 
   const getAuth = useCallback(async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/users/auth", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_BASE_URL}/users/auth`,
+        {
+          withCredentials: true,
+        }
+      );
       if (data.success) {
         setIsAuth(true);
         setUser(data.user);
@@ -51,7 +54,7 @@ function AuthProvider({ children }) {
     async (values) => {
       try {
         const { data } = await axios.post(
-          "http://localhost:3000/users/login",
+          `${import.meta.env.VITE_API_BASE_URL}/users/login`,
           values,
           { withCredentials: true }
         );
@@ -74,7 +77,7 @@ function AuthProvider({ children }) {
 
   const logOut = useCallback(async () => {
     try {
-      await axios.get("http://localhost:3000/users/logout", {
+      await axios.get(`${import.meta.env.VITE_API_BASE_URL}/users/logout`, {
         withCredentials: true,
       });
       setIsAuth(false);

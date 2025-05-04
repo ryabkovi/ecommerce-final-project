@@ -11,7 +11,7 @@ function ResetPasswordPage() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/users/forgot-password",
+        `${import.meta.env.VITE_API_BASE_URL}/users/forgot-password`,
         { email },
         { withCredentials: true }
       );

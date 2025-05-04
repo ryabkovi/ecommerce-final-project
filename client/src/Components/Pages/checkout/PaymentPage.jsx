@@ -50,12 +50,12 @@ function PaymentPage() {
     try {
       setLoading(true);
       await axios.put(
-        `http://localhost:3000/users/update-profile/${user._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/users/update-profile/${user._id}`,
         { paymentMethod: selectedMethod },
         { withCredentials: true }
       );
       await axios.put(
-        `http://localhost:3000/orders/confirm/${orderId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/orders/confirm/${orderId}`,
         {},
         { withCredentials: true }
       );
@@ -81,7 +81,7 @@ function PaymentPage() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/payment/create-order",
+        `${import.meta.env.VITE_API_BASE_URL}/payment/create-order`,
         { cart: cartProducts },
         {
           headers: { "Content-Type": "application/json" },
@@ -98,7 +98,7 @@ function PaymentPage() {
   const onApprovePayPal = async (data) => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/payment/capture-order",
+        `${import.meta.env.VITE_API_BASE_URL}/payment/capture-order`,
         { orderId: data.orderID },
         {
           headers: { "Content-Type": "application/json" },
@@ -111,7 +111,7 @@ function PaymentPage() {
       }
 
       await axios.put(
-        `http://localhost:3000/orders/confirm/${orderId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/orders/confirm/${orderId}`,
         {},
         { withCredentials: true }
       );
