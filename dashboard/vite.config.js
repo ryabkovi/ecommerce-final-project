@@ -6,6 +6,6 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: parseInt(process.env.PORT) || 5174,
-    allowedHosts: ["ecommerce-final-project-client.onrender.com"],
+    allowedHosts: ["ecommerce-final-project-dashboard.onrender.com"],
   },
 });
