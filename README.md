@@ -38,14 +38,39 @@ The project includes a client-facing store, an admin dashboard, and backend API.
 
 ### Regular User
 
-- Email: user@example.com
-- Password: 123456
+- Email: tomi@tomi.com
+- Password: 11112222
 
 ### Manager
 
-- Email: manager@example.com
-- Password: 123456
+- Email: israel@israeli.com
+- Password: 11112222
 
 ## Getting Started
 
 1. Clone the repository:
+   git clone https://github.com/ryabkovi/ecommerce-final-project.git
+
+2. Install dependencies:
+   cd ecommerce-final-project
+   npm install
+
+3. Create a `.env` file based on `.env.example` and fill in your environment variables.
+
+4. Start the server:
+
+5. Start the client and admin frontend using your preferred method (e.g., Vite or npm scripts).
+
+## Deployment
+
+### Live URLs
+
+- Client Site: https://your-client-site.onrender.com
+- Admin Dashboard: https://your-admin-dashboard.onrender.com
+- Backend API: https://your-backend-api.onrender.com
+
+> Replace the URLs with your actual deployed Render links.
+
+## License
+
+This project is for educational purposes and part of a full stack final project.
