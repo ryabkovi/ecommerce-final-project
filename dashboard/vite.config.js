@@ -4,11 +4,6 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    host: "0.0.0.0",
-    port: parseInt(process.env.PORT) || 5174,
-    allowedHosts: ["ecommerce-final-project-dashboard.onrender.com"],
-  },
   build: {
     outDir: "dist",
   },
@@ -18,4 +13,9 @@ export default defineConfig({
     },
   },
   appType: "spa",
+  server: {
+    host: "0.0.0.0",
+    port: parseInt(process.env.PORT) || 5174,
+    allowedHosts: ["ecommerce-final-project-dashboard.onrender.com"],
+  },
 });
