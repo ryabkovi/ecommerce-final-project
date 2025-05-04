@@ -22,6 +22,8 @@ app.use(
       "http://localhost:5173",
       "http://localhost:5174",
       "http://localhost:3000",
+      "https://ecommerce-final-project-client.onrender.com",
+      "https://ecommerce-final-project-dashboard.onrender.com",
     ],
     credentials: true,
   })
@@ -46,7 +48,9 @@ app.use("/payment", paymentRouter);
 
 cron.schedule("0 0 0 * * *", async () => {
   try {
-    await axios.post("http://localhost:3000/users/report-user");
+    await axios.post(
+      "https://ecommerce-final-project-server.onrender.com/users/report-user"
+    );
   } catch (error) {
     console.error("Failed cron report-user:", error.message);
   }
