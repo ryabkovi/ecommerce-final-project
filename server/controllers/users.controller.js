@@ -58,8 +58,8 @@ export default {
 
       res.cookie("user_token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "Lax",
+        secure: true,
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -124,8 +124,8 @@ export default {
 
       res.cookie("user_token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "Lax",
+        secure: true,
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -229,8 +229,8 @@ export default {
 
       res.cookie("user_token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "Lax",
+        secure: true,
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -395,8 +395,8 @@ export default {
 
       res.cookie("user_token", tokenJwt, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "Lax",
+        secure: true,
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
