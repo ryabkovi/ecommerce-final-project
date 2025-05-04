@@ -7,14 +7,12 @@ import { FaBars } from "react-icons/fa";
 import DropdownButton from "../../../lib/DropdownButton";
 import {
   getAllUsers,
-  registerUser,
   updateUser,
   deleteUser,
   deleteAllUsers,
 } from "../../../services/usersService";
 import DeleteUsersModal from "../../modal/users/buttons/DeleteUsersModal";
 import ConfirmUserModal from "../../modal/users/buttons/ConfirmUserModal";
-import AddUserModal from "../../modal/users/AddUserModal";
 import EditUserModal from "../../modal/users/EditUserModal";
 
 function Users() {
@@ -24,7 +22,6 @@ function Users() {
   const [deleteOne, setDeleteOne] = useState(null);
   const [editUser, setEditUser] = useState(null);
   const [confirmDeleteAll, setConfirmDeleteAll] = useState(false);
-  const [showAddModal, setShowAddModal] = useState(false);
 
   const fetchUsers = async () => {
     try {
