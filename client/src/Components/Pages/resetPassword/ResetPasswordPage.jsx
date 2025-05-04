@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../../styles/resetPasswordPage.css";
+import "../../../styles/ResetPasswordPage.css";
 
 function ResetPasswordPage() {
   const [email, setEmail] = useState("");
