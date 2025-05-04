@@ -1,0 +1,171 @@
+/* ✅ Container */
+.product-page-container {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  background-color: #f9f9f9;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* ✅ Left Section - Product Image */
+.product-page-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-page-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ✅ Right Section - Product Details */
+.product-page-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-page-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.product-page-description {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ⭐ Rating */
+.product-page-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.product-page-rating-number {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.product-page-star-icon {
+  color: #ccc;
+  font-size: 18px;
+}
+
+.product-page-star-icon.filled {
+  color: #ffd700;
+}
+
+/* 💵 Price */
+.product-page-price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.product-page-discount {
+  color: #e74c3c;
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+/* 🛒 Buttons */
+.product-page-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.product-page-add-to-cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.product-page-add-to-cart:hover {
+  background-color: #0056b3;
+}
+
+.product-page-favorite-btn {
+  background-color: #f4f4f4;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.product-page-favorite-btn.active {
+  color: red;
+}
+
+.product-page-favorite-btn:hover {
+  background-color: #eaeaea;
+}
+
+/* 📦 Product Info */
+.product-page-info {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.product-page-info li {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.product-page-info strong {
+  font-weight: bold;
+  color: #333;
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+  .product-page-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  .product-page-title {
+    font-size: 24px;
+  }
+
+  .product-page-price {
+    font-size: 20px;
+  }
+
+  .product-page-add-to-cart {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-page-title {
+    font-size: 20px;
+  }
+
+  .product-page-price {
+    font-size: 18px;
+  }
+}
