@@ -1,0 +1,1 @@
+function o(r,y="dd-MM-yyyy"){const t=new Date(r),e=String(t.getDate()).padStart(2,"0"),a=String(t.getMonth()+1).padStart(2,"0"),n=t.getFullYear();return y==="yyyy-MM-dd"?`${n}-${a}-${e}`:`${e}-${a}-${n}`}export{o as f};
