@@ -113,7 +113,7 @@ function Header() {
                       <div className="dropdown-header">
                         👋 Hi, {user?.user_firstName} {user?.user_lastName}
                       </div>
-                      <NavLink to="/MyOrder" className="dropdown-item">
+                      <NavLink to="/my-order" className="dropdown-item">
                         📦 My Orders
                       </NavLink>
                       <NavLink to="/payment-method" className="dropdown-item">

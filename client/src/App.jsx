@@ -40,7 +40,7 @@ function App() {
         <Route path="favorites" element={<Pages.Favorites />} />
         <Route path="create-account" element={<CreateAccount />} />
         <Route path="account" element={<Pages.AccountPage />} />
-        <Route path="MyOrder" element={<Pages.OrdersPage />} />
+        <Route path="my-order" element={<Pages.OrdersPage />} />
         <Route path="payment-method" element={<Pages.PaymentSettingsPage />} />
         <Route path="shipping-info" element={<Pages.ShippingInfoPage />} />
         <Route path="my-favorite" element={<Pages.MyFavoritesPage />} />

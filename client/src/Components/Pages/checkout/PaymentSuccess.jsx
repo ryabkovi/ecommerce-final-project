@@ -10,7 +10,7 @@ function PaymentSuccess() {
         <h2>Thank You!</h2>
         <p>Your payment was successful.</p>
         <p>You’ll receive an order confirmation email shortly.</p>
-        <Link to="/MyOrder" className="save-btn blue">
+        <Link to="/my-order" className="save-btn blue">
           View My Orders
         </Link>
       </div>

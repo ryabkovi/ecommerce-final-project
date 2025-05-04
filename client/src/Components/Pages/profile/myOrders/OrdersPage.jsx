@@ -74,7 +74,7 @@ function OrdersPage() {
         <NavLink to="/payment-method" className="sidebar-item">
           <i className="fas fa-credit-card"></i> Payment Methods
         </NavLink>
-        <NavLink to="/MyOrder" className="sidebar-item active">
+        <NavLink to="/my-order" className="sidebar-item active">
           <i className="fas fa-box"></i> My Orders
         </NavLink>
         <NavLink to="/shipping-info" className="sidebar-item">
