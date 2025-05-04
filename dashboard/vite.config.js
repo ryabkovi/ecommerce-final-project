@@ -8,4 +8,7 @@ export default defineConfig({
     port: parseInt(process.env.PORT) || 5174,
     allowedHosts: ["ecommerce-final-project-dashboard.onrender.com"],
   },
+  build: {
+    outDir: "dist",
+  },
 });
