@@ -23,14 +23,14 @@ function validateToken(req, res, next) {
       res.cookie("manager_token", newToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "Lax",
+        sameSite: "None",
         maxAge: 60 * 60 * 1000,
       });
     } else {
       res.cookie("user_token", newToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "Lax",
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
     }

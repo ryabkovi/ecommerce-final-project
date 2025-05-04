@@ -55,7 +55,7 @@ export default {
       res.cookie("manager_token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "Lax",
+        sameSite: "None",
         maxAge: 60 * 60 * 1000,
       });
 

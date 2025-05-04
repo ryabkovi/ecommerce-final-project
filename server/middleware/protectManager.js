@@ -24,7 +24,7 @@ function protectManager(req, res, next) {
       res.cookie("manager_token", refreshedToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "Lax",
+        sameSite: "None",
         maxAge: 60 * 60 * 1000,
       });
     }
