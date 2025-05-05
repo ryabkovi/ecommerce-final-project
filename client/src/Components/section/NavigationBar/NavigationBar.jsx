@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { IoMdMenu } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -56,7 +55,7 @@ function NavigationBar() {
           </Dropdown.Menu>
         </Dropdown>
 
-        {/* Navigation Links */}
+        {/* Toggler for mobile view */}
         <button
           className="navbar-toggler"
           type="button"
@@ -69,6 +68,7 @@ function NavigationBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
+        {/* Links in collapse */}
         <div
           className="collapse navbar-collapse justify-content-center"
           id="navbarNav"
