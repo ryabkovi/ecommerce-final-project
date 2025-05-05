@@ -33,16 +33,24 @@
 
 .navbar .dropdown-menu .dropdown-item:hover {
   background-color: #007bff;
-  color: white;
+  color: #fff;
   padding-left: 20px;
 }
 
-/* ====== Nav Links Styling ====== */
+/* ====== Navigation Links ====== */
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
 .navbar .nav-link {
   font-weight: 500;
   border-radius: 15px;
   padding: 8px 16px;
   color: #333;
+  transition: background 0.2s ease;
 }
 
 .navbar .nav-link:hover,
@@ -51,7 +59,17 @@
   color: #fff !important;
 }
 
-/* ====== Responsive Styling ====== */
+/* ====== Toggler Icon Customization ====== */
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* ====== Responsive Design ====== */
 @media (max-width: 992px) {
   .navbar .dropdown-menu {
     width: 100%;
@@ -62,14 +80,20 @@
     justify-content: center;
   }
 
-  .navbar .nav-link {
-    text-align: center;
-    margin-top: 10px;
-  }
-
   .navbar-collapse {
     flex-basis: 100%;
     flex-grow: 1;
+    margin-top: 10px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar .nav-link {
+    text-align: center;
+    margin-top: 10px;
   }
 }
 

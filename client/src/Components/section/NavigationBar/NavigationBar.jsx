@@ -7,7 +7,7 @@ import "./NavigationBar.css";
 
 function NavigationBar() {
   const [categories, setCategories] = useState([]);
-  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -20,7 +20,6 @@ function NavigationBar() {
         console.error("Error fetching categories:", error);
       }
     };
-
     fetchCategories();
   }, []);
 
@@ -37,7 +36,6 @@ function NavigationBar() {
             <IoMdMenu size={20} className="me-2" />
             <span className="fs-6">ALL CATEGORIES</span>
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
             {categories.length > 0 ? (
               categories.map((category) => (
@@ -56,23 +54,22 @@ function NavigationBar() {
           </Dropdown.Menu>
         </Dropdown>
 
-        {/* Toggler Button - only for mobile */}
+        {/* Toggler for small screens */}
         <button
-          className="navbar-toggler d-lg-none"
+          className="navbar-toggler"
           type="button"
-          onClick={() => setIsNavOpen((prev) => !prev)}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Always show nav on desktop, toggle on mobile */}
+        {/* Nav links */}
         <div
-          className={`collapse navbar-collapse justify-content-center ${
-            isNavOpen ? "show" : ""
-          }`}
-          id="navbarNav"
+          className={`navbar-links d-lg-flex ${
+            isOpen ? "d-block" : "d-none"
+          } justify-content-center w-100`}
         >
-          <ul className="navbar-nav gap-3">
+          <ul className="navbar-nav gap-3 mx-auto">
             <li className="nav-item">
               <NavLink className="nav-link" to="/">
                 HOME
