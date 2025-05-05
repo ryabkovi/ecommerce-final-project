@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { IoMdMenu } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
