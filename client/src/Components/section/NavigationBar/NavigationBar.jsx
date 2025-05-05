@@ -7,6 +7,7 @@ import "./NavigationBar.css";
 
 function NavigationBar() {
   const [categories, setCategories] = useState([]);
+  const [isNavOpen, setIsNavOpen] = useState(true);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -55,22 +56,20 @@ function NavigationBar() {
           </Dropdown.Menu>
         </Dropdown>
 
-        {/* Toggler for mobile view */}
+        {/* Toggler Button - only for mobile */}
         <button
-          className="navbar-toggler"
+          className="navbar-toggler d-lg-none"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={() => setIsNavOpen((prev) => !prev)}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Links in collapse */}
+        {/* Always show nav on desktop, toggle on mobile */}
         <div
-          className="collapse navbar-collapse justify-content-center"
+          className={`collapse navbar-collapse justify-content-center ${
+            isNavOpen ? "show" : ""
+          }`}
           id="navbarNav"
         >
           <ul className="navbar-nav gap-3">
