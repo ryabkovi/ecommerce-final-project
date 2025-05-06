@@ -277,7 +277,11 @@ export default {
           .json({ success: false, message: "User not found" });
       }
 
-      res.clearCookie("user_token");
+      res.clearCookie("user_token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      });
 
       res.status(200).json({
         success: true,
