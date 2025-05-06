@@ -222,7 +222,7 @@ function GlobalProvider({ children }) {
         return;
       } catch (error) {
         attempt++;
-        console.warn(`\u274C Attempt ${attempt} failed:`, error.message);
+        console.warn(`❌ Attempt ${attempt} failed:`, error.message);
         if (attempt < retries) {
           await new Promise((resolve) => setTimeout(resolve, delay));
         }
@@ -272,30 +272,23 @@ function GlobalProvider({ children }) {
 
   const toggleFavorite = async (product) => {
     if (!product || !product._id) {
-      console.error(
-        "\u274C Invalid product provided to toggleFavorite:",
-        product
-      );
+      console.error("❌ Invalid product provided to toggleFavorite:", product);
       return;
     }
 
     if (isAuth) {
       try {
         const response = await toggleFavoriteService(product._id);
-
         if (response?.success && Array.isArray(response.favorites)) {
           setUser((prev) => ({
             ...prev,
             favorites: response.favorites,
           }));
         } else {
-          console.error(
-            "\u274C toggleFavorite: Unexpected response:",
-            response
-          );
+          console.error("❌ toggleFavorite: Unexpected response:", response);
         }
       } catch (error) {
-        console.error("\u274C Failed to toggle favorite:", error);
+        console.error("❌ Failed to toggle favorite:", error);
       }
     } else {
       setLocalFavorites((prevFavorites) => {
