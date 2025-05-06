@@ -49,37 +49,32 @@ function GlobalProvider({ children }) {
     setTotalPrice(totalCost);
   }, [cart]);
 
-  async function getAllProducts() {
-    try {
-      setIsLoading(true);
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}/products/getAllProducts`,
-        { withCredentials: true }
-      );
-      setProducts(data.data);
-    } catch (error) {
-      console.error("❌ Failed to fetch products:", error.message);
-    } finally {
-      setIsLoading(false);
+  async function getAllProducts(retries = 3, delay = 1500) {
+    let attempt = 0;
+    while (attempt < retries) {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_BASE_URL}/products/getAllProducts`,
+          { withCredentials: true }
+        );
+        setProducts(data.data);
+        return;
+      } catch (error) {
+        attempt++;
+        console.warn(`\u274C Attempt ${attempt} failed:`, error.message);
+        if (attempt < retries) {
+          await new Promise((resolve) => setTimeout(resolve, delay));
+        }
+      } finally {
+        setIsLoading(false);
+      }
     }
   }
 
-  // Auto-refresh logic until products are fetched
   useEffect(() => {
-    let intervalId;
-    const fetchUntilSuccess = async () => {
-      await getAllProducts();
-      if (!products.length) {
-        intervalId = setInterval(async () => {
-          await getAllProducts();
-        }, 1000);
-      }
-    };
-
-    fetchUntilSuccess();
-
-    return () => clearInterval(intervalId);
-  }, []); // run only once on mount
+    getAllProducts();
+  }, []);
 
   const addToCart = (product) => {
     setCart((prevCart) => {
@@ -116,16 +111,31 @@ function GlobalProvider({ children }) {
   const favoriteItems = isAuth ? user?.favorites || [] : localFavorites;
 
   const toggleFavorite = async (product) => {
-    if (!product || !product._id) return;
+    if (!product || !product._id) {
+      console.error(
+        "\u274C Invalid product provided to toggleFavorite:",
+        product
+      );
+      return;
+    }
 
     if (isAuth) {
       try {
         const response = await toggleFavoriteService(product._id);
+
         if (response?.success && Array.isArray(response.favorites)) {
-          setUser((prev) => ({ ...prev, favorites: response.favorites }));
+          setUser((prev) => ({
+            ...prev,
+            favorites: response.favorites,
+          }));
+        } else {
+          console.error(
+            "\u274C toggleFavorite: Unexpected response:",
+            response
+          );
         }
       } catch (error) {
-        console.error("❌ Failed to toggle favorite:", error);
+        console.error("\u274C Failed to toggle favorite:", error);
       }
     } else {
       setLocalFavorites((prevFavorites) => {
