@@ -62,7 +62,7 @@ import "./Home.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductList from "../../ui/ProductList";
-import Loading from "../../ui/Loading";
+import Loading from "../../fallback/Loading";
 import { GlobalContext } from "../../../context/GlobalContext";
 
 // Banner Images
