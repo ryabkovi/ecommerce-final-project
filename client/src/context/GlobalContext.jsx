@@ -180,7 +180,6 @@ function GlobalProvider({ children }) {
   const CART_STORAGE_KEY = "cart";
   const CART_EXPIRATION_DAYS = 1;
 
-  // Load cart from localStorage on mount
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY));
     if (storedCart) {
@@ -194,7 +193,6 @@ function GlobalProvider({ children }) {
     }
   }, []);
 
-  // Update cart summary and persist to localStorage
   useEffect(() => {
     const cartData = {
       items: cart,
@@ -211,30 +209,33 @@ function GlobalProvider({ children }) {
     setTotalPrice(totalCost);
   }, [cart]);
 
-  // Fetch all products with retry on failure
-  const getAllProducts = async (retry = 1) => {
-    try {
-      setIsLoading(true);
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}/products/getAllProducts`,
-        { withCredentials: true }
-      );
-      setProducts(data.data);
-    } catch (error) {
-      console.error("❌ Failed to fetch products:", error);
-      if (retry > 0) {
-        setTimeout(() => getAllProducts(retry - 1), 3000);
+  async function getAllProducts(retries = 3, delay = 1500) {
+    let attempt = 0;
+    while (attempt < retries) {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_BASE_URL}/products/getAllProducts`,
+          { withCredentials: true }
+        );
+        setProducts(data.data);
+        return;
+      } catch (error) {
+        attempt++;
+        console.warn(`\u274C Attempt ${attempt} failed:`, error.message);
+        if (attempt < retries) {
+          await new Promise((resolve) => setTimeout(resolve, delay));
+        }
+      } finally {
+        setIsLoading(false);
       }
-    } finally {
-      setIsLoading(false);
     }
-  };
+  }
 
   useEffect(() => {
     getAllProducts();
   }, []);
 
-  // Cart operations
   const addToCart = (product) => {
     setCart((prevCart) => {
       const newCart = [...prevCart];
@@ -267,20 +268,34 @@ function GlobalProvider({ children }) {
     localStorage.removeItem(CART_STORAGE_KEY);
   };
 
-  // Favorites logic
   const favoriteItems = isAuth ? user?.favorites || [] : localFavorites;
 
   const toggleFavorite = async (product) => {
-    if (!product || !product._id) return;
+    if (!product || !product._id) {
+      console.error(
+        "\u274C Invalid product provided to toggleFavorite:",
+        product
+      );
+      return;
+    }
 
     if (isAuth) {
       try {
         const response = await toggleFavoriteService(product._id);
+
         if (response?.success && Array.isArray(response.favorites)) {
-          setUser((prev) => ({ ...prev, favorites: response.favorites }));
+          setUser((prev) => ({
+            ...prev,
+            favorites: response.favorites,
+          }));
+        } else {
+          console.error(
+            "\u274C toggleFavorite: Unexpected response:",
+            response
+          );
         }
       } catch (error) {
-        console.error("❌ Failed to toggle favorite:", error);
+        console.error("\u274C Failed to toggle favorite:", error);
       }
     } else {
       setLocalFavorites((prevFavorites) => {
@@ -296,25 +311,23 @@ function GlobalProvider({ children }) {
     }
   };
 
+  const value = {
+    cart,
+    products,
+    addToCart,
+    decreaseQuantity,
+    removeFromCart,
+    clearCart,
+    totalProducts,
+    totalPrice,
+    favoriteItems,
+    toggleFavorite,
+    getAllProducts,
+    isLoading,
+  };
+
   return (
-    <GlobalContext.Provider
-      value={{
-        cart,
-        products,
-        addToCart,
-        decreaseQuantity,
-        removeFromCart,
-        clearCart,
-        totalProducts,
-        totalPrice,
-        favoriteItems,
-        toggleFavorite,
-        getAllProducts,
-        isLoading,
-      }}
-    >
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 }
 
